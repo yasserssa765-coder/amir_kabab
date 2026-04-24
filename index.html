@@ -31,9 +31,6 @@
             </button>
             <button onclick="showSection('staff')" id="nav-staff" class="nav-link px-5 py-2 rounded-xl font-bold flex items-center gap-2">
                 <i class="fas fa-users"></i> الموظفين
-            </button>
-            <a href="https://discord.gg/qqasVYdt" target="_blank" class="px-5 py-2 bg-[#5865F2] hover:bg-[#4752c4] rounded-xl font-bold flex items-center gap-2 shadow-lg hover:scale-105">
-                <i class="fab fa-discord"></i> الدسكورد
             </a>
         </div>
     </nav>
@@ -89,11 +86,13 @@
                 <p class="text-gray-500">يرجى إدخال بياناتك بدقة</p>
             </div>
             <div class="space-y-4">
-                <input id="name" type="text" placeholder="اسمك الحقيقي" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none transition-all">
-                <input id="namec" type="text" placeholder="اسم شخصيتك" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none transition-all">
-                <input id="age" type="number" placeholder="العمر" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none">
-                <input id="ids" type="text" placeholder="ايديك دسكورد" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none">
-                <textarea id="time" placeholder="ساعات تواجدك" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none h-28 resize-none"></textarea>
+                <input id="name" type="text" placeholder="اسمك باللعبه" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none transition-all">
+                <input id="dis" type="text" placeholder="Discord copy + Username" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none transition-all">
+                <input id="age" type="number" placeholder="العمر ⟮الحقيقي⟯" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none">
+                <input id="time" type="text" placeholder="ساعات تواجدك اليومية" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none">
+                <textarea id="asr" placeholder="الاعصار الي تتواجد فيه" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none h-28 resize-none"></textarea>
+                <textarea id="reason" placeholder="سبب تقديمك للمطعم" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none h-28 resize-none"></textarea>
+                <textarea id="abrat" placeholder="هل لديك خبرات سابقة" class="w-full p-4 bg-gray-800/50 rounded-2xl border border-gray-700 focus:border-purple-500 outline-none h-28 resize-none"></textarea>
                 <button onclick="submitForm()" class="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 rounded-2xl font-bold text-xl transition-all transform hover:scale-[1.02]">إرسال التقديم</button>
                 <button onclick="closeForm()" class="w-full py-2 text-gray-500 hover:text-white font-medium">تراجع</button>
             </div>
@@ -195,10 +194,12 @@
     
     // جلب البيانات
     const name = document.getElementById('name').value;
-    const age = document.getElementById('age').value;
-    const namec = document.getElementById('namec').value;
-    const ids = document.getElementById('ids').value;
-    const time = document.getElementById('time').value;
+    const age = document.getElementById('dis').value;
+    const namec = document.getElementById('age').value;
+    const ids = document.getElementById('time').value;
+    const time = document.getElementById('asr').value;
+    const time = document.getElementById('reason').value;
+    const time = document.getElementById('abrat').value;
 
     // التحقق من الحقول
     if(!name || !age || !namec || !ids) {
@@ -212,11 +213,13 @@
             title: "🔔 طلب توظيف جديد - مطعم أمير الكباب",
             color: 0x22c55e, // لون أخضر للنجاح
             fields: [
-                { name: "👤 الاسم الحقيقي", value: name, inline: true },
-                { name: "🎂 العمر", value: age, inline: true },
-                { name: "🎮 اسم الشخصية", value: namec, inline: false },
-                { name: "🆔 ايدي الدسكورد", value: ids, inline: false },
-                { name: "⏱️ ساعات التواجد", value: time, inline: false }
+                { name: "👤 اسمك باللعبه", value: name, inline: true },
+                { name: "Discord copy + Username", value: dis, inline: true },
+                { name: "العمر ⟮الحقيقي⟯", value: age, inline: false },
+                { name: "ساعات تواجدك اليومية", value: time, inline: false },
+                { name: "الاعصار الي تتواجد فيه", value: asr, inline: false },
+                { name: "سبب تقديمك للمطعم", value: reason, inline: false },
+                { name: "هل لديك خبرات سابقة", value: abrat, inline: false }
             ],
             footer: { text: "نظام التوظيف الإلكتروني" }, 
             timestamp: new Date()
